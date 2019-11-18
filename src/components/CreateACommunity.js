@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-export default function CreateACountry() {
+export default function CreateACommunity() {
   const useStyles = makeStyles({
     root: {
       width: "80%",
@@ -23,32 +23,32 @@ export default function CreateACountry() {
 
   const classes = useStyles();
 
-  const [country, setCountry] = useState("");
+  const [community, setCommunity] = useState("");
 
   const handleChanges = event => {
-    setCountry({ ...country, [event.target.name]: event.target.value });
+    setCommunity({ ...community, [event.target.name]: event.target.value });
   };
 
   const submitForm = event => {
     event.preventDefault();
-    handleChanges(country);
-    setCountry({ countryName: "" });
+    handleChanges(community);
+    setCommunity({ communityName: "" });
   };
 
   return (
     <Paper className={classes.root}>
-      <h1>Create A Country</h1>
+      <h1>Create A Community</h1>
       <form className={classes.form} onSubmit={submitForm}>
         <TextField
           required
-          label="Country Name"
+          label="Community Name"
           type="text"
-          name="countryName"
+          name="communityName"
           onChange={handleChanges}
           variant="outlined"
         />
         <Button type="submit" variant="contained">
-          Create Country
+          Create Community
         </Button>
       </form>
     </Paper>
