@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export default function CreateACountry() {
   const useStyles = makeStyles({
     root: {
-      width: "100%",
+      width: "80%",
       overflowX: "auto",
       margin: "5%",
       display: "flex",
@@ -36,9 +36,9 @@ export default function CreateACountry() {
   };
 
   return (
-    <Paper classname={classes.root}>
+    <Paper className={classes.root}>
       <h1>Create A Country</h1>
-      <form classname={classes.form} onSubmit={submitForm}>
+      <form className={classes.form} onSubmit={submitForm}>
         <TextField
           required
           label="Country Name"
