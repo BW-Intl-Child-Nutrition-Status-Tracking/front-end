@@ -1,10 +1,10 @@
 import React from "react";
-import ChildRecordNew from "./components/ChildRecordNew";
+import ChildRecordNewForm from "./components/ChildRecordNewForm";
 
 function App() {
   return (
     <div>
-      <ChildRecordNew />
+      <ChildRecordNewForm />
     </div>
   );
 }

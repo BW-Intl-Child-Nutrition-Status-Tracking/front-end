@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 
-function ChildRecordNew() {
+function ChildRecordNewForm() {
   return (
     <Form>
       <label htmlFor="childName">CHILD'S NAME</label>
@@ -40,7 +40,7 @@ function ChildRecordNew() {
   );
 }
 
-const FormikChildRecordNew = withFormik({
+const FormikChildRecordNewForm = withFormik({
   mapPropsToValues({
     childName,
     parentsNames,
@@ -74,6 +74,6 @@ const FormikChildRecordNew = withFormik({
       weight: weight || ""
     };
   }
-})(ChildRecordNew);
+})(ChildRecordNewForm);
 
-export default FormikChildRecordNew;
+export default FormikChildRecordNewForm;
