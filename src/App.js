@@ -6,6 +6,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import LogInForm from "./components/LogInForm";
 import Menu from "./components/Menu";
 import ChildRecordNewForm from "./components/ChildRecordNewForm";
+import DataTable from "./components/DataTable";
+import CreateACountry from "./components/CreateACountry";
 
 function App() {
   return (
@@ -15,6 +17,10 @@ function App() {
         <Route path="/:id/childRecord" component={ChildRecordNewForm} />
       </PrivateRoute>
       <Route exact path="/" component={LogInForm} />
+
+      <ChildRecordNewForm />
+      <DataTable />
+      <CreateACountry />
     </div>
   );
 }
