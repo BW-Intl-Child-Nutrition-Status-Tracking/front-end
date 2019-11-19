@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import Child from "./Child";
 
-function Childs(props) {
+function Children(props) {
   console.log(props);
-  const childs = props.communities[props.match.params.id].childs;
-  console.log(childs);
-  if (!childs) return <h1>Loading</h1>;
+  const children = props.communities[props.match.params.id].childs;
+  console.log(children);
+  if (!children) return <h1>Loading</h1>;
 
   return (
     <div>
-      <h2>Childs</h2>
+      <h2>Children</h2>
     </div>
   );
 }
@@ -21,4 +21,4 @@ const mapStatetoProps = state => {
     communities: state.data
   };
 };
-export default connect(mapStatetoProps, {})(Childs);
+export default connect(mapStatetoProps, {})(Children);

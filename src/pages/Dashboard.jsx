@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import DataTable from "../components/DataTable";
+import Menu from "../components/Menu";
 
 function CountryList() {
   const [countries, setCountries] = useState([]);
@@ -12,7 +13,14 @@ function CountryList() {
   // countries data looks like:
   //  [{ name: "Croatia"}, ..., {  name: "Kenya"}]
 
-  return <DataTable columns={["name"]} data={countries} />;
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <Menu />
+
+      <DataTable columns={["name"]} data={countries} />
+    </div>
+  );
 }
 
 function CommunityList(props) {
@@ -27,16 +35,19 @@ function CommunityList(props) {
   }, [countryID]);
 
   return (
-    <h1>{countryID}</h1>
-    <DataTable
-      columns={
-        [
-          /* */
-        ]
-      }
-      data={communities}
-    />
-  )
+    <div>
+      <h1>{countryID}</h1>
+      <Menu />
+      <DataTable
+        columns={
+          [
+            /* */
+          ]
+        }
+        data={communities}
+      />
+    </div>
+  );
 }
 
 function ChildrenList(props) {
@@ -51,15 +62,18 @@ function ChildrenList(props) {
   }, [countryID, communityID]);
 
   return (
-    <h1>{communityID}</h1>
-    <DataTable
-      columns={
-        [
-          /* */
-        ]
-      }
-      data={children}
-    />
+    <div>
+      <h1>{communityID}</h1>
+      <Menu />
+      <DataTable
+        column={
+          [
+            /* */
+          ]
+        }
+        data={children}
+      />
+    </div>
   );
 }
 /**
@@ -90,5 +104,6 @@ export default function Dashboard(props) {
     <div style={{ fontSize: 62, backgroundColor: "red" }}>
       Expected either countryID or communityID to be set, and they were not
     </div>
+    //error message
   );
 }

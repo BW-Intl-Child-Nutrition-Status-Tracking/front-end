@@ -48,7 +48,7 @@ const commRows = [
   communityData("Mno")
 ];
 
-const childRows = ["name", "screenDate", "weight"][
+const childRows = [
   ({ name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
   { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
   { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
@@ -60,6 +60,26 @@ const childRows = ["name", "screenDate", "weight"][
 
 export default function DataTable(column, data) {
   const classes = useStyles();
+
+  const countryColumns = ["name"];
+
+  const countryRows = [
+    { name: "Turkey" },
+    { name: "Kenya" },
+    { name: "Uzbekistan" },
+    { name: "Macedonia" },
+    { name: "Uruguay" }
+  ];
+
+  const columns = ["name", "screenDate", "weight"];
+
+  const childData = [
+    { name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
+    { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
+    { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
+    { name: "Jordan", screenDate: "05 / 22 / 2019", weight: "30 kg" },
+    { name: "Gabe", screenDate: "07 / 30 / 2019", weight: "24 kg" }
+  ];
 
   return (
     <Paper className={classes.root}>
@@ -73,7 +93,7 @@ export default function DataTable(column, data) {
         </TableHead>
         <TableBody>
           {data.map(row => (
-            <TableRow key={row[column]}>
+            <TableRow>
               {column.map(column => (
                 <TableCell>{row[column]}</TableCell>
               ))}
