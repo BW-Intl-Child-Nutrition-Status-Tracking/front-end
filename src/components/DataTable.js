@@ -22,6 +22,16 @@ function countryData(name) {
   return { name };
 }
 
+function communityData(name) {
+  return { name };
+}
+
+function childrenData(name, screenDate, weight) {
+  return { name, screenDate, weight };
+}
+
+//test data
+
 const rows = [
   countryData("Turkey"),
   countryData("Kenya"),
@@ -30,23 +40,43 @@ const rows = [
   countryData("Uruguay")
 ];
 
-export default function DataTable() {
+const commRows = [
+  communityData("Abc"),
+  communityData("Def"),
+  communityData("Ghi"),
+  communityData("Jkl"),
+  communityData("Mno")
+];
+
+const childRows = ["name", "screenDate", "weight"][
+  ({ name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
+  { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
+  { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
+  { name: "Jordan", screenDate: "05 / 22 / 2019", weight: "30 kg" },
+  { name: "Gabe", screenDate: "07 / 30 / 2019", weight: "24 kg" })
+];
+
+//still need to pull out column names and set to column
+
+export default function DataTable(column, data) {
   const classes = useStyles();
 
   return (
     <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="country table">
+      <Table className={classes.table} aria-label="data table">
         <TableHead>
           <TableRow>
-            <TableCell>Country Name</TableCell>
+            {column.map(column => (
+              <TableCell>{column}</TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
+          {data.map(row => (
+            <TableRow key={row[column]}>
+              {column.map(column => (
+                <TableCell>{row[column]}</TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
@@ -54,3 +84,8 @@ export default function DataTable() {
     </Paper>
   );
 }
+
+//ultimately, rows will be changed to {data} so this becomes dynamic.
+//TableCells also must become dynamic- map function on column array?
+
+// i need to column.map((c) => <TableCell>{c}<TableCell>) and i need to add another column.map that indexes into column to gain value of row, like r[c]

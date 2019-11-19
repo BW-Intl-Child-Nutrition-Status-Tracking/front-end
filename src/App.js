@@ -3,13 +3,12 @@ import { Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
-import LogInForm from "./components/LogInForm";
-import Menu from "./components/Menu";
-import ChildRecordNewForm from "./components/ChildRecordNewForm";
+// import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import DataTable from "./components/DataTable";
 import CreateACountry from "./components/CreateACountry";
 import CreateAUser from "./components/CreateAUser";
 import Childs from "./components/Childs";
+
 
 function App(props) {
   console.log(props);
@@ -35,6 +34,7 @@ function App(props) {
       {/* <ChildRecordNewForm /> */}
       {/* <DataTable /> */}
       {/* <CreateACountry /> */}
+
     </div>
   );
 }
