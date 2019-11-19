@@ -1,26 +1,40 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
 // import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import DataTable from "./components/DataTable";
 import CreateACountry from "./components/CreateACountry";
-// import Dashboard from "./pages/Dashboard";
-// import LogIn from "./pages/LogIn";
+import CreateAUser from "./components/CreateAUser";
+import Childs from "./components/Childs";
 
-function App() {
+
+function App(props) {
+  console.log(props);
+  // sessionStorage.clear();
+  if (props.isloading)
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
   return (
     <div>
-      <PrivateRoute>
-        {/* <Route path="/:username" component={Dashboard} /> */}
-        {/* <Route path="/:username/childRecord" component={ChildRecordNewForm} /> */}
+      <PrivateRoute path="/:username">
+        <Route path="/:username" component={Menu} />
+        <Route path="/:username/childRecord" component={ChildRecordNewForm} />
+        <Route path="/:username/createAUser" component={CreateAUser} />
+        <Route path="/:username/createACountry" component={CreateACountry} />
+        <Route path="/:username/:communitie/:id/childs" component={Childs} />
       </PrivateRoute>
-      {/* <Route exact path="/" component={LogIn} /> */}
+
+      <Route exact path="/" component={LogInForm} />
 
       {/* <ChildRecordNewForm /> */}
-      <DataTable />
-      <CreateACountry />
+      {/* <DataTable /> */}
+      {/* <CreateACountry /> */}
+
     </div>
   );
 }
