@@ -39,7 +39,7 @@ export const createUser = (newuser, history) => dispatch => {
   axios
     .post("http://localhost:5000/api/signup", newuser)
     .then(respo => console.log(respo))
-    .catch(respon => dispatch({ type: USER_INFO_FAILED }));
+    .catch(respo => dispatch({ type: USER_INFO_FAILED }));
 };
 
 // User Information Fetch
