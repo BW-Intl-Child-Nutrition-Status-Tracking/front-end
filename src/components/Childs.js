@@ -11,6 +11,9 @@ function Childs(props) {
   return (
     <div>
       <h2>Childs</h2>
+      {childs.map(child => (
+        <Child child={child} key={child.id} />
+      ))}
     </div>
   );
 }
