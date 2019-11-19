@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import { logInaction } from "../actions";
+import { logInaction, userInfo } from "../actions";
 import { Link } from "react-router-dom";
 
 function LogInForm(props) {
+  console.log(props);
   const [values, setValues] = useState({
     username: "",
     password: ""
   });
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      props.userInfo(props.username);
+      props.history.push(`/${props.username}`);
+    }
+  }, [sessionStorage.getItem("token")]);
 
   const onchange = event => {
     setValues({
@@ -32,6 +39,7 @@ function LogInForm(props) {
           name="username"
           placeholder="username"
           onChange={onchange}
+          value={values.username}
         />
         <label htmlFor="password">Password: </label>
         <input
@@ -39,6 +47,7 @@ function LogInForm(props) {
           name="password"
           placeholder="password"
           onChange={onchange}
+          value={values.password}
         />
         <button>LogIn</button>
         <p>
@@ -48,5 +57,9 @@ function LogInForm(props) {
     </div>
   );
 }
-
-export default connect(state => state, { logInaction })(LogInForm);
+const mapStatetoProps = state => {
+  return {
+    username: state.user
+  };
+};
+export default connect(mapStatetoProps, { logInaction, userInfo })(LogInForm);

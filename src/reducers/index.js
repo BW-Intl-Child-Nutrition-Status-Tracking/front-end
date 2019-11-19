@@ -1,11 +1,24 @@
-import { LOGIN_LOADING, LOGIN_FETCH, LOGIN_FAILED } from "../actions";
+import {
+  LOGIN_LOADING,
+  LOGIN_FETCH,
+  LOGIN_FAILED,
+  USER_INFO_LOADING,
+  USER_INFO_FETCH,
+  USER_INFO_FAILED,
+  COUNTRY_INFO_LOADING,
+  COUNTRY_INFO_FETCH,
+  COUNTRY_INFO_FAILED,
+  COUNTRIES_INFO_FETCH,
+  COUNTRIES_INFO_FAILED
+} from "../actions";
 
 const initiallstate = {
   user: sessionStorage.getItem("username"),
   data: [],
   isloading: false,
   error: null,
-  token: sessionStorage.getItem("token")
+  token: sessionStorage.getItem("token"),
+  userInfo: ""
 };
 
 export const rootReducer = (state = initiallstate, actions) => {
@@ -34,6 +47,66 @@ export const rootReducer = (state = initiallstate, actions) => {
         data: [],
         isloading: false,
         error: "Invalid UserName or Password!"
+      };
+
+    // user info fetch
+    case USER_INFO_LOADING:
+      return {
+        ...state,
+        isloading: true,
+        error: null
+      };
+
+    case USER_INFO_FETCH:
+      return {
+        ...state,
+        userInfo: actions.payload,
+        isloading: false,
+        error: null
+      };
+    case USER_INFO_FAILED:
+      return {
+        data: [],
+        isloading: false,
+        error: "error loading user Info"
+      };
+
+    // Country Fetch
+    // case COUNTRY_INFO_LOADING:
+    //   console.log(actions.payload);
+    //   return {
+    //     ...state,
+    //     isloading: true,
+    //     error: null
+    //   };
+    case COUNTRY_INFO_FETCH:
+      return {
+        ...state,
+        data: actions.payload,
+        isloading: false,
+        error: null
+      };
+    case COUNTRY_INFO_FAILED:
+      return {
+        data: [],
+        isloading: false,
+        error: "NO COMMUNITE FOUND"
+      };
+
+    // Countries Fetch
+
+    case COUNTRIES_INFO_FETCH:
+      return {
+        ...state,
+        data: actions.payload,
+        isloading: false,
+        error: null
+      };
+    case COUNTRIES_INFO_FAILED:
+      return {
+        data: [],
+        isloading: false,
+        error: "error loading Info"
       };
     default:
       return state;
