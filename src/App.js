@@ -3,13 +3,14 @@ import { Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
-import ChildRecordNewForm from "./components/ChildRecordNewForm";
-import DataTable from "./components/DataTable";
 import CreateACountry from "./components/CreateACountry";
 import CreateAUser from "./components/CreateAUser";
-import Childs from "./components/Childs";
-import Menu from "./components/Menu";
+import Children from "./components/Children";
+import Dashboard from "./pages/Dashboard";
+import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
+import DataTable from "./components/DataTable";
+
 function App(props) {
   console.log(props);
   // sessionStorage.clear();
@@ -22,17 +23,17 @@ function App(props) {
   return (
     <div>
       <PrivateRoute path="/:username">
-        <Route path="/:username" component={Menu} />
+        <Route path="/:username" component={Dashboard} />
         <Route path="/:username/childRecord" component={ChildRecordNewForm} />
         <Route path="/:username/createAUser" component={CreateAUser} />
         <Route path="/:username/createACountry" component={CreateACountry} />
-        <Route path="/:username/:communitie/:id/childs" component={Childs} />
+        <Route path="/:username/:community/:id/children" component={Children} />
       </PrivateRoute>
 
       <Route exact path="/" component={LogInForm} />
 
       {/* <ChildRecordNewForm /> */}
-      {/* <DataTable /> */}
+      <DataTable />
       {/* <CreateACountry /> */}
     </div>
   );
