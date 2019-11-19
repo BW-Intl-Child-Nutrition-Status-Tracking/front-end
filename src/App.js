@@ -6,10 +6,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreateACountry from "./components/CreateACountry";
 import CreateAUser from "./components/CreateAUser";
 import Children from "./components/Children";
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
 import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
-import DataTable from "./components/DataTable";
+// import DataTable from "./components/DataTable";
 
 function App(props) {
   console.log(props);
@@ -23,7 +23,7 @@ function App(props) {
   return (
     <div>
       <PrivateRoute path="/:username">
-        <Route path="/:username" component={Dashboard} />
+        {/* <Route path="/:username" component={Dashboard} /> */}
         <Route path="/:username/childRecord" component={ChildRecordNewForm} />
         <Route path="/:username/createAUser" component={CreateAUser} />
         <Route path="/:username/createACountry" component={CreateACountry} />
@@ -32,8 +32,8 @@ function App(props) {
 
       <Route exact path="/" component={LogInForm} />
 
-      {/* <ChildRecordNewForm /> */}
-      <DataTable />
+      <ChildRecordNewForm />
+      {/* <DataTable /> */}
       {/* <CreateACountry /> */}
     </div>
   );
