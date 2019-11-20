@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import DataTable from "../components/DataTable";
 import Menu from "../components/Menu";
+import { connect } from "react-redux";
 
 function CountryList() {
   const [countries, setCountries] = useState([]);
@@ -82,7 +83,7 @@ function ChildrenList(props) {
  *   - /username/country/:countryID                        => renders list of communities
  *   - /username/country/:countryID/community/:communityID => renders list of children
  */
-export default function Dashboard(props) {
+function Dashboard(props) {
   const { countryID, communityID } = useParams();
 
   //this view is for global admins
@@ -107,3 +108,5 @@ export default function Dashboard(props) {
     //error message
   );
 }
+
+export default connect(state => state)(Dashboard);

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Child from "./Child";
+import Child from "../pages/ChildView";
 
 function Children(props) {
   console.log(props);
@@ -10,14 +10,10 @@ function Children(props) {
 
   return (
     <div>
-<<<<<<< HEAD:src/components/Childs.js
-      <h2>Childs</h2>
-      {childs.map(child => (
-        <Child child={child} key={child.id} />
-      ))}
-=======
       <h2>Children</h2>
->>>>>>> 576f00291b1c6e05095f1a97750c5ac1b12286a0:src/components/Children.js
+      {children.map(child => (
+        <Child child={child} />
+      ))}
     </div>
   );
 }
