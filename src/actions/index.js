@@ -73,13 +73,17 @@ export const countryFetch = country => dispatch => {
 
 export const countriesFetch = () => dispatch => {
   const authAxios = axiosWithAuth();
+  const data = [{ countr: "use", communities: "wfdwef" }];
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://reqres.in/api/products/3", true, data);
+  xhr.onload = function() {
+    console.log(xhr.responseText);
+  };
+  xhr.send("POST", "https://reqres.in/api/products/3", data);
+  // dispatch({ type: COUNTRIES_INFO_LOADING });
+  // authAxios
+  //   .get("http://localhost:5000/api/countries")
+  //   .then(respo => console.log(respo))
 
-  dispatch({ type: COUNTRIES_INFO_LOADING });
-  authAxios
-    .get("http://localhost:5000/api/countries")
-    .then(respo =>
-      dispatch({ type: COUNTRIES_INFO_FETCH, payload: respo.data })
-    )
-
-    .catch(respon => dispatch({ type: COUNTRIES_INFO_FAILED }));
+  //   .catch(respon => console.log(respon));
 };
