@@ -8,7 +8,7 @@ import Countries from "./Countries";
 function Menu(props) {
   console.log(props);
   useEffect(() => {
-    props.userInfo(props.userinfo);
+    props.userInfo(props.username);
   }, []);
 
   const OnLogOut = () => {
@@ -26,21 +26,23 @@ function Menu(props) {
           <Link to={`/${props.userAllInfo.username}/createAUser`}>
             Create User
           </Link>
-          <Link to={`/${props.userAllInfo.username}/createACountry`}>
-            Create Country
-          </Link>
+          <Link to={`/createACountry`}>Create Country</Link>
         </div>
       )}
-
-      <Link to={`/${props.user}/childRecord`}>add Child</Link>
-      {props.userAllInfo.usertype ? <Countries /> : <Communities />}
+      <Link to={`/createacommunity`}>CreateACommunity</Link>
+      <Link to={`/childRecord`}>add Child</Link>
+      {props.userAllInfo.usertype ? (
+        <Countries />
+      ) : (
+        <Communities history={props.history} />
+      )}
     </div>
   );
 }
 
 const mapStatetoProps = state => {
   return {
-    userinfo: state.user,
+    username: state.user,
     userAllInfo: state.userInfo
   };
 };

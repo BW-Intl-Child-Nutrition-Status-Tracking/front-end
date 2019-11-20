@@ -21,6 +21,8 @@ export const COUNTRIES_INFO_FAILED = "COUNTRIES_INFO_LOADING";
 
 // Login Token
 export const logInaction = (values, history) => dispatch => {
+  sessionStorage.setItem("username", values.username);
+
   dispatch({ type: LOGIN_LOADING });
   axios
     .post("http://localhost:5000/api/login", values)
@@ -44,11 +46,10 @@ export const createUser = (newuser, history) => dispatch => {
 
 // User Information Fetch
 export const userInfo = user => dispatch => {
-  console.log(user);
   const authAxios = axiosWithAuth();
 
   authAxios
-    .get(`http://localhost:5000/api/userpage/${user}`)
+    .get(`http://localhost:5000/api/${user}`)
     .then(respo => dispatch({ type: USER_INFO_FETCH, payload: respo.data }))
     .catch(respon => dispatch({ type: USER_INFO_FAILED }));
 };

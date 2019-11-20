@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Child from "../pages/ChildView";
 
 function Children(props) {
   console.log(props);
@@ -10,6 +11,9 @@ function Children(props) {
   return (
     <div>
       <h2>Children</h2>
+      {children.map(child => (
+        <Child child={child} />
+      ))}
     </div>
   );
 }

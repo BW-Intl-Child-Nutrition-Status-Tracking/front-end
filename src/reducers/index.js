@@ -33,7 +33,6 @@ export const rootReducer = (state = initiallstate, actions) => {
 
     case LOGIN_FETCH:
       sessionStorage.setItem("token", actions.payload.token.payload);
-      sessionStorage.setItem("username", actions.payload.user);
 
       return {
         ...state,
@@ -58,6 +57,7 @@ export const rootReducer = (state = initiallstate, actions) => {
       };
 
     case USER_INFO_FETCH:
+      console.log(actions);
       return {
         ...state,
         userInfo: actions.payload,
@@ -96,6 +96,7 @@ export const rootReducer = (state = initiallstate, actions) => {
     // Countries Fetch
 
     case COUNTRIES_INFO_FETCH:
+      console.log(actions);
       return {
         ...state,
         data: actions.payload,
