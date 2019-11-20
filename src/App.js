@@ -7,7 +7,7 @@ import CreateACountry from "./components/CreateACountry";
 import CreateAUser from "./components/CreateAUser";
 import Children from "./components/Children";
 import CreateACommunity from "./components/CreateACommunity";
-// import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 // import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
 import Menu from "./components/Menu";
@@ -16,7 +16,7 @@ import Menu from "./components/Menu";
 function App(props) {
   console.log(sessionStorage.getItem("username"));
   console.log(props);
-  // sessionStorage.clear();
+  sessionStorage.clear();
   if (props.isloading)
     return (
       <div className="loading">

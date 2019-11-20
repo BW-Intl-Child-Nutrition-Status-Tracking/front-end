@@ -61,7 +61,7 @@ const CreateACountry = props => {
           required
           label="Country Name"
           type="text"
-          name="countryName"
+          name="country"
           variant="outlined"
         />
         <Button className={classes.button} type="submit" variant="contained">
@@ -73,14 +73,14 @@ const CreateACountry = props => {
 };
 
 const FormikCreateACountry = withFormik({
-  mapPropsToValues({ countryName }) {
+  mapPropsToValues({ country }) {
     return {
-      countryName: countryName || ""
+      country: country || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    countryName: Yup.string().required()
+    country: Yup.string().required()
   }),
 
   handleSubmit(values, { setStatus, resetForm, props }) {
