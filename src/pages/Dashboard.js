@@ -1,79 +1,71 @@
-import React, { useState, useEffect, useParams } from "react";
+import React from "react";
+import { useParams } from "react-router-dom";
 import DataTable from "../components/DataTable";
 import Menu from "../components/Menu";
-import { connect } from "react-redux";
-import axios from "axios";
+import countriesData from "../data/countriesData";
+import communitiesData from "../data/communitiesData";
+import childrenData from "../data/childrenData";
 
-function CountryList() {
-  const [countries, setCountries] = useState([]);
-  useEffect(() => {
-    axios.get("/api/countries").then(results => {
-      setCountries(results);
-    });
-  }, []);
+function CountryList(props) {
+  // const [countries, setCountries] = useState([]);
+  // useEffect(() => {
+  //   setCountries(countriesData);
+  // axios.get("/api/countries").then(results => {
+  //   setCountries(results);
+  // });
+  // }, []);
 
   // countries data looks like:
   //  [{ name: "Croatia"}, ..., {  name: "Kenya"}]
-
   return (
     <div>
       <h1>Welcome</h1>
       <Menu />
-
-      <DataTable columns={["name"]} data={countries} />
+      <DataTable columns={["name"]} data={countriesData} />
     </div>
   );
 }
 
 function CommunityList(props) {
-  const { countryID } = useParams();
+  // const { countryID } = useParams();
 
-  const [communities, setCommunities] = useState([]);
+  // const [communities, setCommunities] = useState([]);
 
-  useEffect(() => {
-    axios.get(`/api/country/${countryID}`).then(results => {
-      setCommunities(results);
-    });
-  }, [countryID]);
+  // useEffect(() => {
+  //   setCommunities(communitiesData);
+  // axios.get(`/api/country/${countryID}`).then(results => {
+  //   setCommunities(results);
+  // });
+  // }, [countryID]);
 
   return (
     <div>
-      <h1>{countryID}</h1>
+      <h1>List of communities</h1>
       <Menu />
-      <DataTable
-        columns={
-          [
-            /* */
-          ]
-        }
-        data={communities}
-      />
+      <DataTable columns={["name"]} data={communitiesData} />
     </div>
   );
 }
 
 function ChildrenList(props) {
-  const { communityID } = useParams();
+  // const { communityID } = useParams();
 
-  const [children, setChildren] = useState([]);
+  // const [children, setChildren] = useState([]);
 
-  useEffect(() => {
-    axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
-      setChildren(results);
-    });
-  }, [countryID, communityID]);
+  // useEffect(() => {
+  //   setChildren(childrenData);
+  // axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
+  //   setChildren(results);
+  // });
+  // }, [countryID, communityID]);
 
   return (
     <div>
-      <h1>{communityID}</h1>
+      <h1>List of children</h1>
       <Menu />
       <DataTable
-        column={
-          [
-            /* */
-          ]
-        }
-        data={children}
+        columns={["name", "screenDate", "weight"]}
+        data={childrenData}
       />
     </div>
   );
@@ -84,7 +76,7 @@ function ChildrenList(props) {
  *   - /username/country/:countryID                        => renders list of communities
  *   - /username/country/:countryID/community/:communityID => renders list of children
  */
-function Dashboard(props) {
+export default function Dashboard(props) {
   const { countryID, communityID } = useParams();
 
   //this view is for global admins
@@ -109,5 +101,3 @@ function Dashboard(props) {
     //error message
   );
 }
-
-export default connect(state => state)(Dashboard);

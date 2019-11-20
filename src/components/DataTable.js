@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -19,89 +19,40 @@ const useStyles = makeStyles({
   }
 });
 
-// function countryData(name) {
-//   return { name };
-// }
+function makeLink({ countryID, communityID }, targetID) {
+  if (countryID === undefined) {
+    return `/country/${targetID}`;
+  }
 
-// function communityData(name) {
-//   return { name };
-// }
+  if (countryID && communityID === undefined) {
+    return `/country/${countryID}/community/${targetID}`;
+  }
 
-// function childrenData(name, screenDate, weight) {
-//   return { name, screenDate, weight };
-// }
+  if (countryID && communityID) {
+    return `/country/${countryID}/community/${communityID}/child/${targetID}`;
+  }
+}
 
-// //test data
-
-// const rows = [
-//   countryData("Turkey"),
-//   countryData("Kenya"),
-//   countryData("Uzbekistan"),
-//   countryData("Macedonia"),
-//   countryData("Uruguay")
-// ];
-
-// const commRows = [
-//   communityData("Abc"),
-//   communityData("Def"),
-//   communityData("Ghi"),
-//   communityData("Jkl"),
-//   communityData("Mno")
-// ];
-
-// const childRows = [
-//   { name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
-//   { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
-//   { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
-//   { name: "Jordan", screenDate: "05 / 22 / 2019", weight: "30 kg" },
-//   { name: "Gabe", screenDate: "07 / 30 / 2019", weight: "24 kg" }
-// ];
-
-//still need to pull out column names and set to column
-
-export default function DataTable(column, data) {
+export default function DataTable({ columns, data }) {
   const classes = useStyles();
-
-  const countryColumns = ["name"];
-
-  const countryRows = [
-    { name: "Turkey" },
-    { name: "Kenya" },
-    { name: "Uzbekistan" },
-    { name: "Macedonia" },
-    { name: "Uruguay" }
-  ];
-
-  const columns = ["name", "screenDate", "weight"];
-
-  const childData = [
-    { name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
-    { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
-    { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
-    { name: "Jordan", screenDate: "05 / 22 / 2019", weight: "30 kg" },
-    { name: "Gabe", screenDate: "07 / 30 / 2019", weight: "24 kg" }
-  ];
 
   return (
     <Paper className={classes.root}>
       <Table className={classes.table} aria-label="data table">
         <TableHead>
           <TableRow>
-            {countryColumns.map(column => (
+            {columns.map(column => (
               <TableCell>{column}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {countryRows.map(row => (
+          {data.results.map(row => (
             <TableRow>
-              {countryColumns.map(column => (
-                <TableCell>
-                  <Link
-                    to={`/username/country/${countryID}/community/${communityID}/`}
-                  />
-                  >{row[column]}
-                </TableCell>
+              {columns.map(column => (
+                <Link to={makeLink(data, row.id)}>
+                  <TableCell>{row[column]}</TableCell>
+                </Link>
               ))}
             </TableRow>
           ))}
