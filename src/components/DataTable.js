@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -95,7 +96,12 @@ export default function DataTable(column, data) {
           {countryRows.map(row => (
             <TableRow>
               {countryColumns.map(column => (
-                <TableCell>{row[column]}</TableCell>
+                <TableCell>
+                  <Link
+                    to={`/username/country/${countryID}/community/${communityID}/`}
+                  />
+                  >{row[column]}
+                </TableCell>
               ))}
             </TableRow>
           ))}

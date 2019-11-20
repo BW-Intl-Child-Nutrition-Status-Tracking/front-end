@@ -57,11 +57,11 @@ function ChildrenList(props) {
 
   const [children, setChildren] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
-  //     setChildren(results);
-  //   });
-  // }, [countryID, communityID]);
+  useEffect(() => {
+    axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
+      setChildren(results);
+    });
+  }, [countryID, communityID]);
 
   return (
     <div>
