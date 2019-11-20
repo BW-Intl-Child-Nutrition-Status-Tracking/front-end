@@ -4,7 +4,7 @@ import Child from "../pages/ChildView";
 
 function Children(props) {
   console.log(props);
-  const children = props.communities[props.match.params.id].childs;
+  const children = props.communities[props.match.params.id].children;
   console.log(children);
   if (!children) return <h1>Loading</h1>;
 
