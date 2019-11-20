@@ -29,7 +29,7 @@ function Menu(props) {
           <Link to={`/createACountry`}>Create Country</Link>
         </div>
       )}
-      <Link to={`/createacommunity`}>CreateACommunity</Link>
+      <Link to="/createacommunity">CreateACommunity</Link>
       <Link to={`/childRecord`}>add Child</Link>
       {props.userAllInfo.usertype ? (
         <Countries />

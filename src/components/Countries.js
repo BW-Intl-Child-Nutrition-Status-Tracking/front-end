@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { countriesFetch } from "../actions";
 function Countries(props) {
   console.log(props);
-  // useEffect(() => {
-  //   props.countriesFetch();
-  // }, []);
+  useEffect(() => {
+    props.countriesFetch();
+  }, []);
   return (
     <div>
       <h2>Countries</h2>

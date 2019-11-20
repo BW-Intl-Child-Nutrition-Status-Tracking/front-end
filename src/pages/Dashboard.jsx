@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import DataTable from "../components/DataTable";
 import Menu from "../components/Menu";
 import { connect } from "react-redux";
+import axios from "axios";
 
 function CountryList() {
   const [countries, setCountries] = useState([]);
@@ -56,11 +57,11 @@ function ChildrenList(props) {
 
   const [children, setChildren] = useState([]);
 
-  useEffect(() => {
-    axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
-      setChildren(results);
-    });
-  }, [countryID, communityID]);
+  // useEffect(() => {
+  //   axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
+  //     setChildren(results);
+  //   });
+  // }, [countryID, communityID]);
 
   return (
     <div>

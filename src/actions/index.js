@@ -77,9 +77,19 @@ export const countriesFetch = () => dispatch => {
   dispatch({ type: COUNTRIES_INFO_LOADING });
   authAxios
     .get("http://localhost:5000/api/countries")
-    .then(respo =>
-      dispatch({ type: COUNTRIES_INFO_FETCH, payload: respo.data })
-    )
+    .then(respo => console.log(respo))
 
-    .catch(respon => dispatch({ type: COUNTRIES_INFO_FAILED }));
+    .catch(respon => console.log(respon));
+};
+
+// Create Country
+export const createCountry = values => dispatch => {
+  const authAxios = axiosWithAuth();
+
+  // dispatch({ type: COUNTRIES_INFO_LOADING });
+  authAxios
+    .post("http://localhost:5000/api/createcountry", values)
+    .then(respo => console.log(respo))
+
+    .catch(respon => console.log(respon));
 };
