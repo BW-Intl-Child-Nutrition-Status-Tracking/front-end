@@ -15,6 +15,7 @@ import LogInForm from "./components/LogInForm";
 import Menu from "./components/Menu";
 
 // import DataTable from "./components/DataTable";
+import Header from "./components/Header";
 
 function App(props) {
   console.log(sessionStorage.getItem("username"));
