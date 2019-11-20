@@ -3,13 +3,19 @@ import { connect } from "react-redux";
 import Child from "../pages/ChildView";
 
 function Children(props) {
-  console.log(props);
-  const children = props.communities[props.match.params.id].childs;
-  console.log(children);
+  console.log(props.communities);
+  let children = props.communities[props.match.params.id].childs;
+
+  if (props.userAllInfo.usertype)
+    children =
+      props.communities[props.match.params.countryid].communities[
+        props.match.params.id
+      ].childs;
+
   if (!children) return <h1>Loading</h1>;
 
   return (
-    <div>
+    <div className="list-div ">
       <h2>Children</h2>
       {children.map(child => (
         <Child child={child} />

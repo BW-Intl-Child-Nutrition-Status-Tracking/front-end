@@ -16,7 +16,7 @@ export const COUNTRY_INFO_FAILED = "COUNTRIES_INFO_LOADING";
 
 // Countries-Info
 export const COUNTRIES_INFO_LOADING = "COUNTRIES_INFO_LOADING";
-export const COUNTRIES_INFO_FETCH = "COUNTRIES_INFO_LOADING";
+export const COUNTRIES_INFO_FETCH = "COUNTRIES_INFO_FETCH";
 export const COUNTRIES_INFO_FAILED = "COUNTRIES_INFO_LOADING";
 
 // Login Token
@@ -46,6 +46,7 @@ export const createUser = (newuser, history) => dispatch => {
 
 // User Information Fetch
 export const userInfo = user => dispatch => {
+  console.log(user);
   const authAxios = axiosWithAuth();
 
   authAxios
@@ -71,13 +72,15 @@ export const countryFetch = country => dispatch => {
 
 // All Countries Action Fetch
 
-export const countriesFetch = () => dispatch => {
+export const countriesFetch = (history, username) => dispatch => {
   const authAxios = axiosWithAuth();
 
   dispatch({ type: COUNTRIES_INFO_LOADING });
   authAxios
-    .get("http://localhost:5000/api/countries")
-    .then(respo => console.log(respo))
+    .post("http://localhost:5000/api/createcountry")
+    .then(respo =>
+      dispatch({ type: COUNTRIES_INFO_FETCH, payload: respo.data })
+    )
 
     .catch(respon => console.log(respon));
 };

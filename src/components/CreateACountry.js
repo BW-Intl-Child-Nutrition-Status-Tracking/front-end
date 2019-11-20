@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, dispatch } from "react";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -6,6 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { connect } from "react-redux";
+import { COUNTRIES_INFO_FETCH } from "../actions";
 
 const CreateACountry = props => {
   const useStyles = makeStyles({
@@ -88,6 +90,7 @@ const FormikCreateACountry = withFormik({
     axios
       .post("http://localhost:5000/api/createcountry", values)
       .then(response => {
+        props.dispatch({ type: COUNTRIES_INFO_FETCH, payload: response.data });
         console.log(response.data);
         setStatus(response.data);
         resetForm();
@@ -98,4 +101,4 @@ const FormikCreateACountry = withFormik({
   }
 })(CreateACountry);
 
-export default FormikCreateACountry;
+export default connect(state => state)(FormikCreateACountry);

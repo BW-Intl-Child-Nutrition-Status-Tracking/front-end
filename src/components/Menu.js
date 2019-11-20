@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userInfo } from "../actions";
@@ -6,9 +6,9 @@ import Communities from "./Communities";
 import Countries from "./Countries";
 
 function Menu(props) {
-  console.log(props);
   useEffect(() => {
     props.userInfo(props.username);
+    // props.history.push("/communities");
   }, []);
 
   const OnLogOut = () => {
@@ -23,18 +23,28 @@ function Menu(props) {
       <button onClick={OnLogOut}>LogOut</button>
       {props.userAllInfo.usertype && (
         <div>
-          <Link to={`/${props.userAllInfo.username}/createAUser`}>
+          <button
+            onClick={() =>
+              props.history.push(`/${props.userAllInfo.username}/createAUser`)
+            }
+          >
             Create User
-          </Link>
+          </button>
           <Link to={`/createACountry`}>Create Country</Link>
         </div>
       )}
-      <Link to="/createacommunity">CreateACommunity</Link>
+      <button
+        onClick={() => props.history.push(`/communities/createacommunity`)}
+      >
+        CreateACommunity
+      </button>
       <Link to={`/childRecord`}>add Child</Link>
       {props.userAllInfo.usertype ? (
-        <Countries />
+        <div>
+          <Countries history={props.history} />
+        </div>
       ) : (
-        <Communities history={props.history} />
+        <Communities {...props} />
       )}
     </div>
   );
