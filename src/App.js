@@ -13,6 +13,7 @@ import DataTable from "./components/DataTable";
 import CreateACommunity from "./components/CreateACommunity";
 
 function App(props) {
+  console.log(sessionStorage.getItem("username"));
   console.log(props);
   // sessionStorage.clear();
   if (props.isloading)
@@ -29,6 +30,7 @@ function App(props) {
         <Route path="/:username/createAUser" component={CreateAUser} />
         <Route path="/:username/createACountry" component={CreateACountry} />
         <Route path="/:username/:community/:id/children" component={Children} />
+        {/* <Route path="/Communities" component={Communities} /> */}
       </PrivateRoute>
 
       <Route exact path="/" component={LogInForm} />

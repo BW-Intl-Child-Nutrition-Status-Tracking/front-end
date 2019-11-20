@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { countriesFetch } from "../actions";
 function Countries(props) {
-  useEffect(() => {
-    props.countriesFetch();
-  }, []);
   console.log(props);
+  // useEffect(() => {
+  //   props.countriesFetch();
+  // }, []);
   return (
     <div>
       <h2>Countries</h2>
