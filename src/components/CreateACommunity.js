@@ -3,17 +3,11 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { withFormik, Form } from "formik";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const CreateACommunity = ({ status }) => {
-  const [community, setCommunity] = useState("");
-
-  useEffect(() => {
-    status && setCommunity(community => [...community, status]);
-  }, [status]);
-
+const CreateACommunity = props => {
   const useStyles = makeStyles({
     root: {
       width: "80%",
@@ -60,7 +54,8 @@ const CreateACommunity = ({ status }) => {
     <Paper className={classes.root}>
       <h1 className={classes.headline}>Create A Community</h1>
       <Form className={classes.form}>
-        <TextField
+        <Field
+          as={TextField}
           className={classes.input}
           required
           label="Community Name"

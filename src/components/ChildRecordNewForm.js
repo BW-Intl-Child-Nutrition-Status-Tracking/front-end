@@ -6,13 +6,7 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import axios from "axios";
 
-const ChildRecordNewForm = ({ values, status }) => {
-  const [record, setRecord] = useState([]);
-
-  useEffect(() => {
-    status && setRecord(record => [...record, status]);
-  }, [status]);
-
+const ChildRecordNewForm = props => {
   const useStyles = makeStyles({
     root: {
       width: "100%",
