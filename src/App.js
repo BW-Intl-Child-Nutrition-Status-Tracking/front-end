@@ -10,8 +10,8 @@ import CreateACommunity from "./components/CreateACommunity";
 // import Dashboard from "./pages/Dashboard";
 // import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
-// import DataTable from "./components/DataTable";
 import Menu from "./components/Menu";
+// import DataTable from "./components/DataTable";
 
 function App(props) {
   console.log(sessionStorage.getItem("username"));
@@ -30,7 +30,7 @@ function App(props) {
         {/* <Route path="/:username" component={Dashboard} /> */}
         {/* <Route path="/:username/childRecord" component={ChildRecordNewForm} /> */}
         <Route path="/:username/createAUser" component={CreateAUser} />
-        <Route path="/:username/createACountry" component={CreateACountry} />
+        <Route path="/createACountry" component={CreateACountry} />
         <Route path="/createacommunity" component={CreateACommunity} />
         <Route path="/:username/:community/:id/children" component={Children} />
         {/* <Route path="/Communities" component={Communities} /> */}
@@ -40,7 +40,8 @@ function App(props) {
 
       {/* <ChildRecordNewForm /> */}
       {/* <DataTable /> */}
-      {/* <CreateACountry /> */}
+      {/* <CreateACountry />
+      <CreateACommunity /> */}
     </div>
   );
 }
