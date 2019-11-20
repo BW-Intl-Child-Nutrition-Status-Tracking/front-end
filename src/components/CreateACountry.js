@@ -3,17 +3,11 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { withFormik, Form } from "formik";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const CreateACountry = ({ status }) => {
-  const [country, setCountry] = useState("");
-
-  useEffect(() => {
-    status && setCountry(country => [...country, status]);
-  }, [status]);
-
+const CreateACountry = props => {
   const useStyles = makeStyles({
     root: {
       width: "80%",
@@ -61,7 +55,8 @@ const CreateACountry = ({ status }) => {
     <Paper className={classes.root}>
       <h1 className={classes.headline}>Create A Country</h1>
       <Form className={classes.form}>
-        <TextField
+        <Field
+          as={TextField}
           className={classes.input}
           required
           label="Country Name"
@@ -92,8 +87,8 @@ const FormikCreateACountry = withFormik({
     axios
       .post("https://reqres.in/api/users/", values)
       .then(response => {
-        setStatus(response.data);
         console.log(response.data);
+        setStatus(response.data);
         resetForm();
       })
       .catch(error => {
