@@ -6,8 +6,6 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import axios from "axios";
 
-//Still need to get the form to reset
-
 const ChildRecordNewForm = ({ values, status }) => {
   const [record, setRecord] = useState([]);
 
@@ -237,12 +235,13 @@ const FormikChildRecordNewForm = withFormik({
     height: Yup.string().required(),
     weight: Yup.string().required()
   }),
-  handleSubmit(values, { setStatus }) {
+  handleSubmit(values, { setStatus, resetForm }) {
     axios
       .post("https://reqres.in/api/users/", values)
       .then(response => {
         setStatus(response.data);
         console.log(response.data);
+        resetForm();
       })
       .catch(error => {
         console.log(error.response);

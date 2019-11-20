@@ -10,6 +10,7 @@ import Children from "./components/Children";
 import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
 // import DataTable from "./components/DataTable";
+import CreateACommunity from "./components/CreateACommunity";
 
 function App(props) {
   console.log(props);
@@ -34,7 +35,8 @@ function App(props) {
 
       <ChildRecordNewForm />
       {/* <DataTable /> */}
-      {/* <CreateACountry /> */}
+      <CreateACountry />
+      <CreateACommunity />
     </div>
   );
 }
