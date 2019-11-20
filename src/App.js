@@ -8,7 +8,7 @@ import CreateAUser from "./components/CreateAUser";
 import Children from "./components/Children";
 import CreateACommunity from "./components/CreateACommunity";
 // import Dashboard from "./pages/Dashboard";
-// import ChildRecordNewForm from "./components/ChildRecordNewForm";
+import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
 import Menu from "./components/Menu";
 import DataTable from "./components/DataTable";
@@ -53,6 +53,9 @@ export default function App(props) {
         path="/country/:countryID/community/:communityID/child/:childID"
         component={ChildView}
       />
+      <Route exact path="/add/childrecord" component={ChildRecordNewForm} />
+      <Route exact path="/add/country" component={CreateACountry} />
+      <Route exact path="/add/community" component={CreateACommunity} />
 
       {/* <ChildRecordNewForm /> */}
       {/* <DataTable /> */}

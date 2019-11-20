@@ -5,6 +5,7 @@ import Menu from "../components/Menu";
 import countriesData from "../data/countriesData";
 import communitiesData from "../data/communitiesData";
 import childrenData from "../data/childrenData";
+import Menu2 from "../components/Menu2";
 
 function CountryList(props) {
   // const [countries, setCountries] = useState([]);
@@ -20,7 +21,7 @@ function CountryList(props) {
   return (
     <div>
       <h1>Welcome</h1>
-      <Menu />
+      <Menu2 />
       <DataTable columns={["name"]} data={countriesData} />
     </div>
   );
@@ -41,7 +42,7 @@ function CommunityList(props) {
   return (
     <div>
       <h1>List of communities</h1>
-      <Menu />
+      <Menu2 />
       <DataTable columns={["name"]} data={communitiesData} />
     </div>
   );
@@ -62,7 +63,7 @@ function ChildrenList(props) {
   return (
     <div>
       <h1>List of children</h1>
-      <Menu />
+      <Menu2 />
       <DataTable
         columns={["name", "screenDate", "weight"]}
         data={childrenData}
