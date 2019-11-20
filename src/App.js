@@ -9,7 +9,7 @@ import Children from "./components/Children";
 // import Dashboard from "./pages/Dashboard";
 import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
-// import DataTable from "./components/DataTable";
+import DataTable from "./components/DataTable";
 import CreateACommunity from "./components/CreateACommunity";
 
 function App(props) {
@@ -34,7 +34,7 @@ function App(props) {
       <Route exact path="/" component={LogInForm} />
 
       <ChildRecordNewForm />
-      {/* <DataTable /> */}
+      <DataTable />
       <CreateACountry />
       <CreateACommunity />
     </div>

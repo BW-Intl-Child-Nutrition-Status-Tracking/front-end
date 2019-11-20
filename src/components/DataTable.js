@@ -18,43 +18,43 @@ const useStyles = makeStyles({
   }
 });
 
-function countryData(name) {
-  return { name };
-}
+// function countryData(name) {
+//   return { name };
+// }
 
-function communityData(name) {
-  return { name };
-}
+// function communityData(name) {
+//   return { name };
+// }
 
-function childrenData(name, screenDate, weight) {
-  return { name, screenDate, weight };
-}
+// function childrenData(name, screenDate, weight) {
+//   return { name, screenDate, weight };
+// }
 
-//test data
+// //test data
 
-const rows = [
-  countryData("Turkey"),
-  countryData("Kenya"),
-  countryData("Uzbekistan"),
-  countryData("Macedonia"),
-  countryData("Uruguay")
-];
+// const rows = [
+//   countryData("Turkey"),
+//   countryData("Kenya"),
+//   countryData("Uzbekistan"),
+//   countryData("Macedonia"),
+//   countryData("Uruguay")
+// ];
 
-const commRows = [
-  communityData("Abc"),
-  communityData("Def"),
-  communityData("Ghi"),
-  communityData("Jkl"),
-  communityData("Mno")
-];
+// const commRows = [
+//   communityData("Abc"),
+//   communityData("Def"),
+//   communityData("Ghi"),
+//   communityData("Jkl"),
+//   communityData("Mno")
+// ];
 
-const childRows = [
-  ({ name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
-  { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
-  { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
-  { name: "Jordan", screenDate: "05 / 22 / 2019", weight: "30 kg" },
-  { name: "Gabe", screenDate: "07 / 30 / 2019", weight: "24 kg" })
-];
+// const childRows = [
+//   { name: "Jimmy", screenDate: "01 / 20 / 2019", weight: "25 kg" },
+//   { name: "Susan", screenDate: "09 / 25 / 2019", weight: "30 kg" },
+//   { name: "Tom", screenDate: "08 / 04 / 2019", weight: "20 kg" },
+//   { name: "Jordan", screenDate: "05 / 22 / 2019", weight: "30 kg" },
+//   { name: "Gabe", screenDate: "07 / 30 / 2019", weight: "24 kg" }
+// ];
 
 //still need to pull out column names and set to column
 
@@ -86,15 +86,15 @@ export default function DataTable(column, data) {
       <Table className={classes.table} aria-label="data table">
         <TableHead>
           <TableRow>
-            {column.map(column => (
+            {countryColumns.map(column => (
               <TableCell>{column}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(row => (
+          {countryRows.map(row => (
             <TableRow>
-              {column.map(column => (
+              {countryColumns.map(column => (
                 <TableCell>{row[column]}</TableCell>
               ))}
             </TableRow>
