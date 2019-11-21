@@ -1,21 +1,11 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-
-import { connect } from "react-redux";
-import PrivateRoute from "./components/PrivateRoute";
+import { Route } from "react-router-dom";
 import CreateACountry from "./components/CreateACountry";
-import CreateAUser from "./components/CreateAUser";
-import Children from "./components/Children";
 import CreateACommunity from "./components/CreateACommunity";
-// import Dashboard from "./pages/Dashboard";
 import ChildRecordNewForm from "./components/ChildRecordNewForm";
-import LogInForm from "./components/LogInForm";
-import Menu from "./components/Menu";
-import DataTable from "./components/DataTable";
-import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import ChildView from "./pages/ChildView";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./pages/LandingPage";
 
 export default function App(props) {
   // console.log(sessionStorage.getItem("username"));

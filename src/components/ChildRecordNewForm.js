@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import axios from "axios";
 
-const ChildRecordNewForm = props => {
+const ChildRecordNewForm = () => {
   const useStyles = makeStyles({
     root: {
       width: "100%",

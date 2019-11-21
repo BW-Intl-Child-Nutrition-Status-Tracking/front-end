@@ -5,36 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 function Menu2() {
   const useStyles = makeStyles({
-    parentContainer: {
-      width: "100%",
+    menuDiv: {
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    },
-    root: {
-      width: "70%",
-      display: "flex",
-      justifyContent: "center",
-      flexDirection: "column",
-      alignSelf: "center"
-    },
-
-    headline: {
-      margin: "2%",
-      paddingTop: "2%",
-      alignSelf: "center"
-    },
-
-    buttonDiv: {
-      display: "flex",
-      justifyContent: "space-around",
-      marginBottom: "3%"
+      justifyContent: "space-around"
     }
   });
 
   const classes = useStyles();
+
   return (
-    <div>
+    <div className={classes.menuDiv}>
       <Link to={"/add/childrecord"}>
         <Button>Add a New Child Record</Button>
       </Link>

@@ -10,7 +10,7 @@ function Header(props) {
 
   const useStyles = makeStyles({
     root: {
-      width: "80%",
+      width: "90%",
       overflowX: "auto",
       margin: "5%",
       display: "flex",
@@ -42,7 +42,7 @@ function Header(props) {
   return (
     <div className={classes.root}>
       <div>
-        <h1 className={classes.headline}>ICNST</h1>
+        <h1 className={classes.headline}>MALO</h1>
         <h3 className={classes.subtitle}>
           International Child Nutrition Status Tracker
         </h3>

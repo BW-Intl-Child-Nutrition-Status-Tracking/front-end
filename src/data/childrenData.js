@@ -15,7 +15,7 @@ const childrenData = {
       birthdate: "11/04/2012",
       gender: "male",
       height: "100cm",
-      weight: "25 kg"
+      weight: "31 kg"
     },
     {
       name: "Cindy",
@@ -32,7 +32,7 @@ const childrenData = {
       birthdate: "11/04/2012",
       gender: "male",
       height: "100cm",
-      weight: "25 kg"
+      weight: "31 kg"
     },
     {
       name: "Ali",
@@ -49,7 +49,7 @@ const childrenData = {
       birthdate: "11/04/2012",
       gender: "male",
       height: "100cm",
-      weight: "25 kg"
+      weight: "31 kg"
     },
 
     {
@@ -67,7 +67,7 @@ const childrenData = {
       birthdate: "11/04/2012",
       gender: "male",
       height: "100cm",
-      weight: "25 kg"
+      weight: "31 kg"
     },
     {
       name: "Hope",
@@ -84,7 +84,7 @@ const childrenData = {
       birthdate: "11/04/2012",
       gender: "male",
       height: "100cm",
-      weight: "25 kg"
+      weight: "31 kg"
     }
   ],
   countryID: 1,
