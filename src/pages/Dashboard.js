@@ -5,7 +5,7 @@ import Menu from "../components/Menu";
 import countriesData from "../data/countriesData";
 import communitiesData from "../data/communitiesData";
 import childrenData from "../data/childrenData";
-import Menu2 from "../components/Menu2";
+import Page from "../components/Page";
 
 function CountryList(props) {
   // const [countries, setCountries] = useState([]);
@@ -19,11 +19,10 @@ function CountryList(props) {
   // countries data looks like:
   //  [{ name: "Croatia"}, ..., {  name: "Kenya"}]
   return (
-    <div>
+    <Page>
       <h1>Welcome</h1>
-      <Menu2 />
       <DataTable columns={["name"]} data={countriesData} />
-    </div>
+    </Page>
   );
 }
 
@@ -40,11 +39,10 @@ function CommunityList(props) {
   // }, [countryID]);
 
   return (
-    <div>
+    <Page>
       <h1>List of communities</h1>
-      <Menu2 />
       <DataTable columns={["name"]} data={communitiesData} />
-    </div>
+    </Page>
   );
 }
 
@@ -61,14 +59,13 @@ function ChildrenList(props) {
   // }, [countryID, communityID]);
 
   return (
-    <div>
+    <Page>
       <h1>List of children</h1>
-      <Menu2 />
       <DataTable
         columns={["name", "screenDate", "weight"]}
         data={childrenData}
       />
-    </div>
+    </Page>
   );
 }
 /**

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
-function MenuTwo() {
+function Menu2() {
   const useStyles = makeStyles({
     parentContainer: {
       width: "100%",
@@ -48,4 +48,4 @@ function MenuTwo() {
   );
 }
 
-export default MenuTwo;
+export default Menu2;
