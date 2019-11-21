@@ -50,9 +50,9 @@ export default function DataTable({ columns, data }) {
           {data.results.map(row => (
             <TableRow>
               {columns.map(column => (
-                <Link to={makeLink(data, row.id)}>
-                  <TableCell>{row[column]}</TableCell>
-                </Link>
+                <TableCell>
+                  <Link to={makeLink(data, row.id)}>{row[column]}</Link>
+                </TableCell>
               ))}
             </TableRow>
           ))}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DataTable from "../components/DataTable";
 import Menu from "../components/Menu";
@@ -6,67 +6,81 @@ import countriesData from "../data/countriesData";
 import communitiesData from "../data/communitiesData";
 import childrenData from "../data/childrenData";
 import Page from "../components/Page";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+
+const mock = new MockAdapter(axios);
+
+mock.onGet("/api/countries").reply(200, countriesData);
 
 function CountryList(props) {
-  // const [countries, setCountries] = useState([]);
-  // useEffect(() => {
-  //   setCountries(countriesData);
-  // axios.get("/api/countries").then(results => {
-  //   setCountries(results);
-  // });
-  // }, []);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    axios.get("/api/countries").then(response => {
+      setData(response.data);
+    });
+  }, []);
 
   // countries data looks like:
   //  [{ name: "Croatia"}, ..., {  name: "Kenya"}]
-  return (
-    <Page>
-      <h1>Welcome</h1>
-      <DataTable columns={["name"]} data={countriesData} />
-    </Page>
-  );
+  if (data.results) {
+    return (
+      <Page>
+        <h1>Welcome</h1>
+        <DataTable columns={data.columns} data={data} />
+      </Page>
+    );
+  }
+  return null;
 }
 
-function CommunityList(props) {
-  // const { countryID } = useParams();
+mock.onGet("/api/communities").reply(200, communitiesData);
 
-  // const [communities, setCommunities] = useState([]);
+function CommunityList({ countryID }) {
+  const [data, setData] = useState({});
 
-  // useEffect(() => {
-  //   setCommunities(communitiesData);
-  // axios.get(`/api/country/${countryID}`).then(results => {
-  //   setCommunities(results);
-  // });
-  // }, [countryID]);
+  useEffect(() => {
+    axios
+      .get(`/api/communities`, { params: { countryID: countryID } })
+      .then(response => {
+        setData(response.data);
+      });
+  }, [countryID]);
 
-  return (
-    <Page>
-      <h1>List of communities</h1>
-      <DataTable columns={["name"]} data={communitiesData} />
-    </Page>
-  );
+  if (data.results) {
+    return (
+      <Page>
+        <h1>List of communities</h1>
+        <DataTable columns={data.columns} data={data} />
+      </Page>
+    );
+  }
+  return null;
 }
 
-function ChildrenList(props) {
-  // const { communityID } = useParams();
+mock.onGet("/api/children").reply(200, childrenData);
 
-  // const [children, setChildren] = useState([]);
+function ChildrenList({ communityID }) {
+  const [data, setData] = useState({});
 
-  // useEffect(() => {
-  //   setChildren(childrenData);
-  // axios.get(`/api/country/${countryID}/${communityID}`).then(results => {
-  //   setChildren(results);
-  // });
-  // }, [countryID, communityID]);
+  useEffect(() => {
+    axios
+      .get("/api/children", { params: { communityID: communityID } })
+      .then(response => {
+        setData(response.data);
+      });
+  }, [communityID]);
 
-  return (
-    <Page>
-      <h1>List of children</h1>
-      <DataTable
-        columns={["name", "screenDate", "weight"]}
-        data={childrenData}
-      />
-    </Page>
-  );
+  if (data.results) {
+    return (
+      <Page>
+        <h1>List of children</h1>
+        <DataTable columns={data.columns} data={data} />
+      </Page>
+    );
+  }
+  return null;
 }
 /**
  * This view is triggered via the following urls:
@@ -84,12 +98,12 @@ export default function Dashboard(props) {
 
   //this view is for country admins and global admins
   if (countryID && !communityID) {
-    return <CommunityList {...props} />;
+    return <CommunityList {...props} countryID={countryID} />;
   }
 
   //this view is showing all children in a given community
   if (countryID && communityID) {
-    return <ChildrenList {...props} />;
+    return <ChildrenList {...props} communityID={communityID} />;
   }
 
   return (

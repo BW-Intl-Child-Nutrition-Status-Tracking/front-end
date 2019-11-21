@@ -88,7 +88,9 @@ const childrenData = {
     }
   ],
   countryID: 1,
-  communityID: 2
+  communityID: 2,
+
+  columns: ["name", "screenDate", "weight"]
 };
 
 export default childrenData;

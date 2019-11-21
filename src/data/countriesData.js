@@ -1,16 +1,17 @@
 const countriesData = {
   results: [
-    { name: "Kenya", id: 0 },
-    { name: "Bulgaria", id: 1 },
-    { name: "Croatia", id: 2 },
-    { name: "Macedonia", id: 3 },
-    { name: "Rwanda", id: 4 },
-    { name: "Uzbekistan", id: 5 },
-    { name: "Chile", id: 6 },
-    { name: "Guatemala", id: 7 },
-    { name: "Thailand", id: 8 },
-    { name: "India", id: 9 }
-  ]
+    { name: "Kenya", id: 1 },
+    { name: "Bulgaria", id: 2 },
+    { name: "Croatia", id: 3 },
+    { name: "Macedonia", id: 4 },
+    { name: "Rwanda", id: 5 },
+    { name: "Uzbekistan", id: 6 },
+    { name: "Chile", id: 7 },
+    { name: "Guatemala", id: 8 },
+    { name: "Thailand", id: 9 },
+    { name: "India", id: 10 }
+  ],
+  columns: ["name"]
 };
 
 export default countriesData;
