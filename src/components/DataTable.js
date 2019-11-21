@@ -16,6 +16,10 @@ const useStyles = makeStyles({
   },
   table: {
     minWidth: 650
+  },
+  linkText: {
+    textDecoration: "none",
+    color: "black"
   }
 });
 
@@ -51,7 +55,12 @@ export default function DataTable({ columns, data }) {
             <TableRow>
               {columns.map(column => (
                 <TableCell>
-                  <Link to={makeLink(data, row.id)}>{row[column]}</Link>
+                  <Link
+                    className={classes.linkText}
+                    to={makeLink(data, row.id)}
+                  >
+                    {row[column]}
+                  </Link>
                 </TableCell>
               ))}
             </TableRow>

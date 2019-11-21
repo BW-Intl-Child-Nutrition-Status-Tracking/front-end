@@ -30,8 +30,6 @@ function CountryList(props) {
     });
   }, []);
 
-  // countries data looks like:
-  //  [{ name: "Croatia"}, ..., {  name: "Kenya"}]
   if (data.results) {
     return (
       <Page>
