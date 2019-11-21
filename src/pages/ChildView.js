@@ -1,10 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
 import childrenData from "../data/childrenData";
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Page from "../components/Page";
+// import LineChart from "../components/LineChart";
 
 export default function Child(props) {
   const { childID } = useParams();
@@ -82,6 +82,9 @@ export default function Child(props) {
             <p>{child.screenCountry}</p>
           </div>
         </div>
+        {/* <div>
+          <LineChart />
+        </div> */}
       </Paper>
     </Page>
   );
