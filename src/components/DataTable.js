@@ -45,16 +45,16 @@ export default function DataTable({ columns, data }) {
       <Table className={classes.table} aria-label="data table">
         <TableHead>
           <TableRow>
-            {columns.map(column => (
-              <TableCell>{column}</TableCell>
+            {columns.map((column, idx) => (
+              <TableCell key={idx}>{column}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.results.map(row => (
-            <TableRow>
-              {columns.map(column => (
-                <TableCell>
+          {data.results.map((row, ridx) => (
+            <TableRow key={ridx}>
+              {columns.map((column, idx) => (
+                <TableCell key={idx}>
                   <Link
                     className={classes.linkText}
                     to={makeLink(data, row.id)}
