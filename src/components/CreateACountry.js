@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { createCountry } from "../actions";
 
 const CreateACountry = props => {
-  console.log(props);
   const [country, setCountry] = useState({
     country: ""
   });

@@ -21,5 +21,4 @@ Login Info:
 username: Lambda School
 password: i<3Lambd4
 
-D
 HOPE YOU LIKE IT ! .
