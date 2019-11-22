@@ -64,6 +64,7 @@ export const userInfo = user => dispatch => {
 
 // Country Action Fetch
 export const countryFetch = country => dispatch => {
+  console.log(country);
   const authAxios = axiosWithAuth();
 
   authAxios
@@ -84,6 +85,16 @@ export const createCountry = values => dispatch => {
     .then(respo =>
       dispatch({ type: COUNTRIES_INFO_FETCH, payload: respo.data })
     );
+};
+
+// Create Community
+
+export const createCommunity = (values, community) => dispatch => {
+  console.log(community);
+  const authAxios = axiosWithAuth();
+  authAxios
+    .post(`http://localhost:5000/api/${values}/createcommunity`, community)
+    .then(respo => console.log(respo));
 };
 
 // Edite User
@@ -111,4 +122,16 @@ export const deleteUser = (id, value) => dispatch => {
 
 export const cleaning = () => dispatch => {
   dispatch({ type: CLEANING_DATA });
+};
+
+// Add new Child
+
+export const addNewChild = (country, community, child) => dispatch => {
+  const authAxios = axiosWithAuth();
+
+  authAxios
+    .post(`http://localhost:5000/api/${country}/${community}/addChild`, child)
+    .then(respo => console.log(respo))
+
+    .catch(respon => console.log(respon));
 };

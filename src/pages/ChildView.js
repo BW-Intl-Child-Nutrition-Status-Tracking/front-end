@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 export default function Child(props) {
   console.log(props);
   return (
-    <div className="alllist">
+    <div id="child">
       <div className="field">
         <h5>CHILD'S NAME: </h5>
         <p>{props.child.childName}</p>

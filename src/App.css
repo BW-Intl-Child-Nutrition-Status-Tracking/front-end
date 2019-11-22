@@ -1,6 +1,10 @@
+* {
+  font-family: "Acme", sans-serif;
+}
 .App {
   text-align: center;
   min-height: 100vh;
+  font-family: "Gochi Hand", cursive;
 }
 
 .App-logo {
@@ -27,7 +31,39 @@ a {
 }
 
 .header {
+  width: 95%;
   font-size: 25px;
+  /* justify-content: space-between; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px 30px;
+  margin-bottom: 100px;
+  padding-bottom: 20px;
+  border-bottom: black 1px solid;
+}
+
+.navbtn {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
+}
+.navbtn a:hover {
+  border: none;
+  background: none;
+}
+.logo {
+  width: 45%;
+  font-family: "Neucha", cursive;
+}
+.countrynav {
+  width: 45%;
+  font-size: 40px;
+  text-align: center;
+}
+.countrynav:hover {
+  border: none;
+  background: none;
 }
 
 /* Error */
@@ -39,7 +75,9 @@ a {
   width: 60%;
 }
 .active {
-  color: red;
+  color: gray;
+  font-weight: bolder;
+  text-align: center;
   /* background: rgba(34, 34, 34, 0.96); */
 }
 /* .nav {
@@ -131,22 +169,30 @@ a {
   color: #222222;
 }
 
+/* Countries */
+
 .countries {
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .countries .countriesList {
   display: flex;
   flex-wrap: wrap;
 }
-
-.countries .addcountry {
-  margin: 30px auto;
-  width: 100%;
-  text-align: center;
+.addcountry {
+  margin-bottom: 40px;
+}
+.countries .addcountry a {
+  margin: 50px 10px;
+  font-size: 20px;
+  background: rgba(34, 34, 34, 1);
+}
+.countries .addcountry a:hover {
+  background: white;
 }
 .countries a {
   min-width: 20%;
@@ -158,20 +204,108 @@ a {
   margin: 10px;
   border-radius: 5px;
 }
+
+.countriesList {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
 .countries .country {
+  font-size: 30px;
+  width: 20%;
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.countries .country a {
-  text-align: center;
-  width: 20%;
-}
+
 a:hover {
-  color: red;
+  color: #222222;
+  background: wheat;
+  font-weight: bolder;
+  border: #222222 2px solid;
 }
 
+div .addcountryfrom {
+  height: 30vh;
+  position: fixed;
+  top: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+div .addcountryfrom label {
+  text-align: center;
+  width: 50%;
+  font-size: 30px;
+}
+
+div .addcountryfrom input {
+  text-align: center;
+  width: 50%;
+  font-size: 35px;
+  border: none;
+  border-radius: 5px;
+  height: 55px;
+}
+div .addcountryfrom .formbtn button {
+  font-size: 20px;
+  margin-left: 20px;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+  background: wheat;
+}
+
+/* Communities */
+
+.commHeader {
+  width: 100%;
+  text-align: center;
+  font-size: 35px;
+}
+
+.allcommunities {
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.allcommunities .community {
+  background: rgb(240, 231, 215);
+
+  border-radius: 10px;
+  margin: 50px;
+  text-align: center;
+  width: 100%;
+  margin: 1px auto;
+  border: #222222 1px solid;
+  font-size: 25px;
+  color: #222222;
+}
+
+.allcommunities .community:hover {
+  background: wheat;
+}
+.commbtn {
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
+.commbtn button {
+  text-align: center;
+  margin-left: 20px;
+  font-size: 20px;
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  color: #222222;
+  background: rgb(240, 231, 215);
+}
+
+/* USERS  */
 .usersList {
   display: flex;
   flex-wrap: wrap;
@@ -213,12 +347,13 @@ a:hover {
   font-size: 20px;
   border: none;
   border-radius: 5px;
-  color: wheat;
 }
 
 .field h5 {
-  text-align: end;
+  color: wheat;
+  text-align: start;
   font-size: 20px;
+  font-weight: 100;
   width: 25%;
   margin: 0;
   margin-right: 40px;
@@ -228,15 +363,26 @@ a:hover {
   background: #282c34;
 }
 
+.adduserbtn {
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgb(240, 231, 215);
+}
+.adduserbtn:hover {
+  background: wheat;
+}
+
 /* Create User */
 
-/* .createUser {
+.createUser {
   display: flex;
   width: 100%;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
-} */
+  align-items: flex-start;
+}
 
 @keyframes fadeIn {
   from {
@@ -246,7 +392,9 @@ a:hover {
     opacity: 1;
   }
 }
-
+#addnewuser {
+  width: 700px;
+}
 .editeForm {
   display: flex;
   width: 100%;
@@ -278,14 +426,171 @@ a:hover {
   font-size: 25px;
   width: 20%;
   color: wheat;
-  text-align: end;
+  text-align: start;
   margin-right: 10px;
 }
-
+select {
+  width: 60%;
+  height: 20px;
+  font-size: 18px;
+  height: 40px;
+}
+option {
+  height: 30px;
+}
 .editeForm input {
   font-size: 1.5rem;
   width: 60%;
   margin-bottom: 20px;
 }
+.addusersbtn {
+  width: 40%;
+  display: flex;
+}
 
-/* Countries */
+.adduserform label {
+  font-size: 25px;
+}
+.adduserform button {
+  margin-top: 20px;
+  width: 100%;
+  margin-left: 10px;
+  font-size: 19px;
+  text-align: center;
+  border-radius: 5px;
+  border: wheat 1px solid;
+  height: 30px;
+  color: wheat;
+  background: #222222;
+}
+
+.oneuser button {
+  color: aliceblue;
+  border: none;
+}
+
+/* Childrens */
+
+.childrens {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.childrens h2 {
+  width: 100%;
+  font-size: 35px;
+  text-align: center;
+}
+
+.childsbtn {
+  display: flex;
+  width: 55%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.childsbtn button,
+.childsbtn a {
+  border-radius: 10px;
+  font-size: 25px;
+  border: none;
+  margin-left: 20px;
+  width: 15%;
+  text-align: center;
+  background: rgb(240, 231, 215);
+  padding: 10px 0;
+  color: black;
+}
+
+.childsbtn a {
+  width: 20%;
+}
+
+.childsbtn button:hover,
+.childsbtn a:hover {
+  color: #222222;
+  font-weight: 100;
+}
+
+.allchilds {
+  display: flex;
+  flex-wrap: wrap;
+}
+#allch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#child {
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  width: 60%;
+  background: #222222;
+  margin-bottom: 10px;
+}
+
+#child .field {
+  justify-content: center;
+  width: 50%;
+  margin-bottom: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#child .field p {
+  width: 30%;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+#child .field h5 {
+  color: wheat;
+  text-align: start;
+  font-size: 16px;
+  font-weight: 100;
+  width: 40%;
+  margin: 0;
+  margin-right: 40px;
+}
+
+.addchild {
+  display: flex;
+  flex-direction: column;
+  min-width: 700px;
+  /* flex-wrap: wrap; */
+}
+
+.addchild div {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+}
+.addchild div label {
+  width: 30%;
+  text-align: end;
+}
+
+.addchild div input {
+  width: 50%;
+}
+
+.btndiv {
+  display: flex;
+  justify-content: center;
+}
+.addchild button {
+  height: 40px;
+  text-align: center;
+}

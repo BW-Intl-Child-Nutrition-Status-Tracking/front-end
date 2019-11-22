@@ -14,7 +14,6 @@ function CreateAUser(props) {
   });
   const onChange = event => {
     if ([event.target.name] == "usertype") {
-      console.log(event.target.value);
       if (event.target.value == "true")
         setUser({
           ...user,
@@ -32,7 +31,6 @@ function CreateAUser(props) {
       });
     }
   };
-  console.log(user);
   const onSubmit = event => {
     event.preventDefault();
     props.createUser(user, props.history);
@@ -40,7 +38,7 @@ function CreateAUser(props) {
   };
   return (
     <div className="createUser">
-      <form onSubmit={onSubmit} className="editeForm">
+      <form onSubmit={onSubmit} className="editeForm adduserform">
         <label htmlFor="firstname">First Name: </label>
         <input name="firstname" id="firstname" onChange={onChange} />
         <label htmlFor="lastname">Last Name: </label>
@@ -58,15 +56,17 @@ function CreateAUser(props) {
           <option value="true">Globel Admin</option>
           <option value="false">Country Admin</option>
         </select>
-        <button>Submit</button>
-        <button
-          onClick={event => {
-            event.preventDefault();
-            props.history.goBack();
-          }}
-        >
-          Cancel
-        </button>
+        <div className="addusersbtn">
+          <button>Submit</button>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              props.history.goBack();
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

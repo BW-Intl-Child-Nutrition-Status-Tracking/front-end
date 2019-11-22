@@ -17,7 +17,7 @@ function Countries(props) {
   return (
     <div className="countries">
       <div className="addcountry">
-        <Link to={`/createACountry`}>Add Country</Link>
+        <Link to={`/createACountry`}>Add New Country</Link>
       </div>
       <div className="countriesList">
         {props.countries.map((country, index) => (

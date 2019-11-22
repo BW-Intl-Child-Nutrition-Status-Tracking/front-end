@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-
 import { Route, Switch } from "react-router-dom";
 import Communities from "./components/Communities";
 import { connect } from "react-redux";
@@ -32,7 +31,10 @@ function App(props) {
         <Route path="/createACountry" component={CreateACountry} />
         <Route path="/:username/users" component={AllUsers} />
         <Route exact path="/:username" component={Menu} />
-        <Route path="/childRecord" component={ChildRecordNewForm} />
+        <Route
+          path="/:country/:community/childRecord"
+          component={ChildRecordNewForm}
+        />
         <Route path="/:username/users/createAUser" component={CreateAUser} />
         <Route
           path="/:country/communities/createacommunity"

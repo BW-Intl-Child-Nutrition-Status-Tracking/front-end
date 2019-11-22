@@ -31,7 +31,7 @@ function ShowUser(props) {
   };
   return (
     <div>
-      <div className="alllist">
+      <div className="alllist  adduserform">
         <div className="field">
           <h5>Username: </h5>
           <p>{props.showuser.username}</p>
@@ -60,12 +60,20 @@ function ShowUser(props) {
             <p> Country Admin </p>
           )}
         </div>
-        <button onClick={() => props.deleteUser(user.id, user)}>Delete</button>
-        <button onClick={() => setEdite(true)}>Edite</button>
+        <div className="addusersbtn oneuser">
+          <button onClick={() => props.deleteUser(user.id, user)}>
+            Delete
+          </button>
+          <button onClick={() => setEdite(true)}>Edite</button>
+        </div>
       </div>
       {edite && (
-        <div className="form-div">
-          <form onSubmit={onSubmit} className="editeForm">
+        <div className="form-div createUser">
+          <form
+            onSubmit={onSubmit}
+            id="addnewuser"
+            className="editeForm adduserform"
+          >
             <label htmlFor="username">User Name:</label>
             <input
               id="username"
@@ -73,7 +81,6 @@ function ShowUser(props) {
               onChange={onChange}
               value={user.username}
             />
-
             <label htmlFor="firstname">First Name:</label>
             <input
               id="firstname"
@@ -95,25 +102,42 @@ function ShowUser(props) {
               onChange={onChange}
               value={user.email}
             />
-            <div>
-              {user.usertype ? (
-                <select name="usertype" onChange={onChange}>
-                  <option value="true" selected={true}>
-                    Globel Admin
-                  </option>
-                  <option value="false"></option>
-                </select>
-              ) : (
-                <select name="usertype" onChange={onChange}>
-                  <option value="true">Globel Admin</option>
-                  <option value="false" selected={true}>
-                    Country Admin
-                  </option>{" "}
-                </select>
-              )}
+            <label htmlFor="country">Country</label>
+            <input
+              id="country"
+              name="country"
+              onChange={onChange}
+              value={user.country}
+            />
+            <label>User Type:</label>
+
+            {user.usertype ? (
+              <select
+                className="editeselect"
+                name="usertype"
+                onChange={onChange}
+              >
+                <option value="true" selected={true}>
+                  Globel Admin
+                </option>
+                <option value="false">Country Admin</option>
+              </select>
+            ) : (
+              <select
+                className="editeselect"
+                name="usertype"
+                onChange={onChange}
+              >
+                <option value="true">Globel Admin</option>
+                <option value="false" selected={true}>
+                  Country Admin
+                </option>{" "}
+              </select>
+            )}
+            <div className="addusersbtn">
+              <button>Edite</button>
+              <button onClick={() => setEdite(false)}>Cancel</button>
             </div>
-            <button>Edite</button>
-            <button onClick={() => setEdite(false)}>Cancel</button>
           </form>
         </div>
       )}

@@ -21,22 +21,25 @@ const CreateACountry = props => {
   };
   return (
     <div>
-      <form className="editeForm">
+      <form className="editeForm addcountryfrom">
         <label htmlFor="countryname">Country name:</label>
         <input
           placeholder="country name"
           name="countryname"
           onChange={onChange}
         />
-        <button>Submit</button>
-        <button
-          onClick={event => {
-            event.preventDefault();
-            props.history.goBack();
-          }}
-        >
-          Cancel
-        </button>
+        <div className="formbtn">
+          {" "}
+          <button>Submit</button>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              props.history.goBack();
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

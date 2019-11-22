@@ -44,32 +44,30 @@ function Header(props) {
   const classes = useStyles();
 
   return (
-    <div className="nav">
-      <div className={`${classes.root} header`}>
-        <div>
-          <h1 className={classes.headline}>MALO </h1>
-          <h3>International Child Nutrition Status Tracker</h3>
-        </div>
-        {props.userAllInfo ? (
-          props.userAllInfo.usertype ? (
-            <div>
-              <NavLink to={`/${props.username}/users`}>Users</NavLink>
-              <NavLink exact to={`/${props.username}`}>
-                Countries
-              </NavLink>
-            </div>
-          ) : (
+    <div className="header">
+      <div className="logo">
+        <h1 className={classes.headline}>MALO </h1>
+        <h3>International Child Nutrition Status Tracker</h3>
+      </div>
+      {props.userAllInfo ? (
+        props.userAllInfo.usertype ? (
+          <div className="navbtn">
+            <NavLink to={`/${props.username}/users`}>Users</NavLink>
             <NavLink exact to={`/${props.username}`}>
-              {props.userAllInfo.country}
+              Countries
             </NavLink>
-          )
-        ) : null}
+          </div>
+        ) : (
+          <NavLink className="countrynav" exact to={`/${props.username}`}>
+            {props.userAllInfo.country.toUpperCase()}
+          </NavLink>
+        )
+      ) : null}
 
-        <div>
-          <Button onClick={OnLogOut} variant="contained">
-            LogOut
-          </Button>
-        </div>
+      <div>
+        <Button onClick={OnLogOut} variant="contained">
+          LogOut
+        </Button>
       </div>
     </div>
   );
