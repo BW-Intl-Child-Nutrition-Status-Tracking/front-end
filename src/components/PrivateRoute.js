@@ -6,7 +6,6 @@ const isAuthenticated = () => {
 };
 
 export default function PrivateRoute({ children, ...rest }) {
-  console.log(isAuthenticated());
   return (
     <Route
       {...rest}

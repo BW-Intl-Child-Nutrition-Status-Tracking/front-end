@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { logInaction, userInfo } from "../actions";
 import { Link } from "react-router-dom";
+import { stat } from "fs";
 
 function LogInForm(props) {
-  console.log(props);
   const [values, setValues] = useState({
     username: "",
     password: ""
@@ -25,41 +25,50 @@ function LogInForm(props) {
 
   const onLogin = event => {
     event.preventDefault();
-    props.logInaction(values, props.history);
+    props.logInaction(values);
   };
 
   return (
-    <div>
-      <h3>Login Please</h3>
-      {props.error ? <p>{props.error}</p> : null}
-      <form onSubmit={onLogin}>
-        <label htmlFor="username">UserName: </label>
-        <input
-          id="username"
-          name="username"
-          placeholder="username"
-          onChange={onchange}
-          value={values.username}
-        />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          name="password"
-          placeholder="password"
-          onChange={onchange}
-          value={values.password}
-        />
-        <button>LogIn</button>
-        <p>
-          forgot your password? <Link to="">reset Password</Link>
+    <div className="container">
+      {" "}
+      <div className="loginDiv">
+        <h3>Login Please</h3>
+        {props.error ? <p className="error">{props.error}</p> : null}
+        <form onSubmit={onLogin}>
+          <div className="line">
+            <label htmlFor="username">UserName: </label>
+            <input
+              id="username"
+              name="username"
+              placeholder="username"
+              onChange={onchange}
+              value={values.username}
+            />
+          </div>
+          <div className="line">
+            <label htmlFor="password">Password: </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+              onChange={onchange}
+              value={values.password}
+            />
+          </div>
+          <button>LogIn</button>
+        </form>
+        <p className="forgot">
+          forgot your password? <Link to="">Reset Password</Link>
         </p>
-      </form>
+      </div>
     </div>
   );
 }
 const mapStatetoProps = state => {
   return {
-    username: state.user
+    username: state.user,
+    error: state.error
   };
 };
 export default connect(mapStatetoProps, { logInaction, userInfo })(LogInForm);

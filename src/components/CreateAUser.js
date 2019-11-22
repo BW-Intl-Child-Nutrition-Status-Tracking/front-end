@@ -36,10 +36,11 @@ function CreateAUser(props) {
   const onSubmit = event => {
     event.preventDefault();
     props.createUser(user, props.history);
+    props.history.push(`/${props.username}/users`);
   };
   return (
-    <div>
-      <form onSubmit={onSubmit}>
+    <div className="createUser">
+      <form onSubmit={onSubmit} className="editeForm">
         <label htmlFor="firstname">First Name: </label>
         <input name="firstname" id="firstname" onChange={onChange} />
         <label htmlFor="lastname">Last Name: </label>
@@ -58,9 +59,24 @@ function CreateAUser(props) {
           <option value="false">Country Admin</option>
         </select>
         <button>Submit</button>
+        <button
+          onClick={event => {
+            event.preventDefault();
+            props.history.goBack();
+          }}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
 }
 
-export default connect(state => state, { createUser })(CreateAUser);
+const mapStatetoProps = state => {
+  return {
+    username: state.user,
+    userAllInfo: state.userInfo
+  };
+};
+
+export default connect(mapStatetoProps, { createUser })(CreateAUser);

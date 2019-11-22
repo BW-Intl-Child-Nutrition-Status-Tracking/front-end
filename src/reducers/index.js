@@ -9,7 +9,9 @@ import {
   COUNTRY_INFO_FETCH,
   COUNTRY_INFO_FAILED,
   COUNTRIES_INFO_FETCH,
-  COUNTRIES_INFO_FAILED
+  COUNTRIES_INFO_FAILED,
+  USERS_INFO_FETCH,
+  CLEANING_DATA
 } from "../actions";
 
 const initiallstate = {
@@ -18,7 +20,9 @@ const initiallstate = {
   isloading: false,
   error: null,
   token: sessionStorage.getItem("token"),
-  userInfo: ""
+  userInfo: "",
+  countries: [],
+  allusers: []
 };
 
 export const rootReducer = (state = initiallstate, actions) => {
@@ -57,7 +61,6 @@ export const rootReducer = (state = initiallstate, actions) => {
       };
 
     case USER_INFO_FETCH:
-      console.log(actions);
       return {
         ...state,
         userInfo: actions.payload,
@@ -96,7 +99,6 @@ export const rootReducer = (state = initiallstate, actions) => {
     // Countries Fetch
 
     case COUNTRIES_INFO_FETCH:
-      console.log(actions);
       return {
         ...state,
         data: actions.payload,
@@ -108,6 +110,18 @@ export const rootReducer = (state = initiallstate, actions) => {
         data: [],
         isloading: false,
         error: "error loading Info"
+      };
+
+    case USERS_INFO_FETCH:
+      return {
+        ...state,
+        allusers: actions.payload,
+        isloading: false,
+        error: null
+      };
+    case CLEANING_DATA:
+      return {
+        initiallstate
       };
     default:
       return state;

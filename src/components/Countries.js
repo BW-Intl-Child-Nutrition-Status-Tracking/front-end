@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { countriesFetch } from "../actions";
+import { createCountry } from "../actions";
 function Countries(props) {
-  console.log(props);
   useEffect(() => {
-    props.countriesFetch(props.history, props.username);
-    console.log(props.username);
-
-    // if (!props.country || props.countries.length == 0)
+    props.createCountry();
     props.history.push(`/${props.username}`);
   }, []);
 
@@ -20,11 +16,20 @@ function Countries(props) {
     );
   return (
     <div className="countries">
-      {props.countries.map((country, index) => (
-        <Link className="country" to={`/addmincommunities/${index}`}>
-          {country.country}
-        </Link>
-      ))}
+      <div className="addcountry">
+        <Link to={`/createACountry`}>Add Country</Link>
+      </div>
+      <div className="countriesList">
+        {props.countries.map((country, index) => (
+          <Link
+            className="country"
+            to={`/${country.country}/addmincommunities/${index}`}
+            key={index}
+          >
+            {country.country}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
@@ -36,4 +41,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { countriesFetch })(Countries);
+export default connect(mapStateToProps, { createCountry })(Countries);

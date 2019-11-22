@@ -19,8 +19,16 @@ export const COUNTRIES_INFO_LOADING = "COUNTRIES_INFO_LOADING";
 export const COUNTRIES_INFO_FETCH = "COUNTRIES_INFO_FETCH";
 export const COUNTRIES_INFO_FAILED = "COUNTRIES_INFO_LOADING";
 
+// // UserS- Info
+// export const USERS_INFO_LOADING = "USERS_INFO_LOADING";
+export const USERS_INFO_FETCH = "USERS_INFO_FETCH";
+// export const USERS_INFO_FAILED = "USERS_INFO_FAILED";
+
+// users
+export const CLEANING_DATA = "CLEANING_DATA";
+
 // Login Token
-export const logInaction = (values, history) => dispatch => {
+export const logInaction = values => dispatch => {
   sessionStorage.setItem("username", values.username);
 
   dispatch({ type: LOGIN_LOADING });
@@ -40,13 +48,12 @@ export const createUser = (newuser, history) => dispatch => {
   console.log(newuser, history);
   axios
     .post("http://localhost:5000/api/signup", newuser)
-    .then(respo => console.log(respo))
+    .then(respo => dispatch({ type: USERS_INFO_FETCH, payload: respo.data }))
     .catch(respo => dispatch({ type: USER_INFO_FAILED }));
 };
 
 // User Information Fetch
 export const userInfo = user => dispatch => {
-  console.log(user);
   const authAxios = axiosWithAuth();
 
   authAxios
@@ -57,10 +64,8 @@ export const userInfo = user => dispatch => {
 
 // Country Action Fetch
 export const countryFetch = country => dispatch => {
-  console.log(country);
   const authAxios = axiosWithAuth();
 
-  // dispatch({ type: COUNTRY_INFO_LOADING });
   authAxios
     .get(`http://localhost:5000/api/countries/${country}`)
     .then(respo =>
@@ -70,29 +75,40 @@ export const countryFetch = country => dispatch => {
     .catch(respon => dispatch({ type: COUNTRY_INFO_FAILED }));
 };
 
-// All Countries Action Fetch
-
-export const countriesFetch = (history, username) => dispatch => {
-  const authAxios = axiosWithAuth();
-
-  dispatch({ type: COUNTRIES_INFO_LOADING });
-  authAxios
-    .post("http://localhost:5000/api/createcountry")
-    .then(respo =>
-      dispatch({ type: COUNTRIES_INFO_FETCH, payload: respo.data })
-    )
-
-    .catch(respon => console.log(respon));
-};
-
 // Create Country
 export const createCountry = values => dispatch => {
   const authAxios = axiosWithAuth();
 
-  // dispatch({ type: COUNTRIES_INFO_LOADING });
   authAxios
     .post("http://localhost:5000/api/createcountry", values)
-    .then(respo => console.log(respo))
+    .then(respo =>
+      dispatch({ type: COUNTRIES_INFO_FETCH, payload: respo.data })
+    );
+};
+
+// Edite User
+
+export const editeUser = (id, value) => dispatch => {
+  const authAxios = axiosWithAuth();
+
+  authAxios
+    .put(`http://localhost:5000/api/user/${id}`, value)
+    .then(respo => dispatch({ type: USERS_INFO_FETCH, payload: respo.data }))
 
     .catch(respon => console.log(respon));
+};
+
+// Delete a User
+export const deleteUser = (id, value) => dispatch => {
+  const authAxios = axiosWithAuth();
+
+  authAxios
+    .delete(`http://localhost:5000/api/user/${id}`, value)
+    .then(respo => dispatch({ type: USERS_INFO_FETCH, payload: respo.data }))
+
+    .catch(respon => console.log(respon));
+};
+
+export const cleaning = () => dispatch => {
+  dispatch({ type: CLEANING_DATA });
 };

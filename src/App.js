@@ -9,17 +9,15 @@ import CreateACountry from "./components/CreateACountry";
 import CreateAUser from "./components/CreateAUser";
 import Children from "./components/Children";
 import CreateACommunity from "./components/CreateACommunity";
-import Dashboard from "./pages/Dashboard";
 import ChildRecordNewForm from "./components/ChildRecordNewForm";
 import LogInForm from "./components/LogInForm";
 import Menu from "./components/Menu";
+import AllUsers from "./components/AllUsers";
+import Countries from "./components/Countries";
 
-// import DataTable from "./components/DataTable";
 import Header from "./components/Header";
 
 function App(props) {
-  console.log(sessionStorage.getItem("username"));
-  console.log(props);
   // sessionStorage.clear();
   if (props.isloading)
     return (
@@ -30,18 +28,18 @@ function App(props) {
   return (
     <div>
       <PrivateRoute path="/:username">
+        <Route path="/" component={Header} />
         <Route path="/createACountry" component={CreateACountry} />
-
-        <Route path="/:username" component={Menu} />
-        {/* <Route path="/:username" component={Dashboard} /> */}
+        <Route path="/:username/users" component={AllUsers} />
+        <Route exact path="/:username" component={Menu} />
         <Route path="/childRecord" component={ChildRecordNewForm} />
-        <Route path="/:username/createAUser" component={CreateAUser} />
+        <Route path="/:username/users/createAUser" component={CreateAUser} />
         <Route
           path="/:country/communities/createacommunity"
           component={CreateACommunity}
         />
-        <Route path="/addmincommunities/:id" component={Communities} />
-
+        <Route path="/:country/addmincommunities/:id" component={Communities} />
+        <Route path="/:country/communities" component={Communities} />
         <Route
           exact
           path="/:country/:community/:id/children"

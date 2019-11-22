@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Child from "../pages/ChildView";
 
@@ -15,7 +16,16 @@ function Children(props) {
   if (!children) return <h1>Loading</h1>;
 
   return (
-    <div className="list-div ">
+    <div className="list-div">
+      <button
+        onClick={event => {
+          event.preventDefault();
+          props.history.goBack();
+        }}
+      >
+        Back
+      </button>
+      <Link to={`/childRecord`}>add Child</Link>
       <h2>Children</h2>
       {children.map(child => (
         <Child child={child} />

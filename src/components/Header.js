@@ -1,10 +1,14 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { cleaning } from "../actions";
 
 function Header(props) {
   const OnLogOut = () => {
     sessionStorage.clear();
+    props.cleaning();
     props.history.push("/");
   };
 
@@ -40,20 +44,42 @@ function Header(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <div>
-        <h1 className={classes.headline}>ICNST</h1>
-        <h3 className={classes.subtitle}>
-          International Child Nutrition Status Tracker
-        </h3>
-      </div>
-      <div>
-        <Button onClick={OnLogOut} variant="contained">
-          LogOut
-        </Button>
+    <div className="nav">
+      <div className={`${classes.root} header`}>
+        <div>
+          <h1 className={classes.headline}>MALO </h1>
+          <h3>International Child Nutrition Status Tracker</h3>
+        </div>
+        {props.userAllInfo ? (
+          props.userAllInfo.usertype ? (
+            <div>
+              <NavLink to={`/${props.username}/users`}>Users</NavLink>
+              <NavLink exact to={`/${props.username}`}>
+                Countries
+              </NavLink>
+            </div>
+          ) : (
+            <NavLink exact to={`/${props.username}`}>
+              {props.userAllInfo.country}
+            </NavLink>
+          )
+        ) : null}
+
+        <div>
+          <Button onClick={OnLogOut} variant="contained">
+            LogOut
+          </Button>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Header;
+const mapStatetoProps = state => {
+  return {
+    username: state.user,
+    userAllInfo: state.userInfo
+  };
+};
+
+export default connect(mapStatetoProps, { cleaning })(Header);
